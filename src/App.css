@@ -1,0 +1,41 @@
+body{ 
+    margin: 0;
+    padding : 0 ;
+    box-sizing: border-box;
+}
+
+.link{
+    color: white;
+    padding-left: 10px;
+    text-decoration: none;
+}
+.link:hover{
+    color: #A2D2FF;
+}
+.active{
+    color: #A2D2FF;
+}
+.btn {
+    text-decoration: none;
+    background-color: #9D84B7;
+    color: white;
+    border-radius: 4px;
+    margin: 0.75rem 1.5rem;
+    border: 1px solid #9D84B7;
+    cursor: pointer;
+  }
+  
+  .btn:hover,
+  .btn:active {
+    background-color: #A2D2FF;
+    border-color: #A2D2FF;
+  }
+
+  .answered{
+      color: black;
+    border-radius: 4px;
+    margin: 0.75rem ;
+
+  }
+  
+ 
