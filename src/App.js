@@ -5,9 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import Login from "./components/login";
 import Container from "@mui/material/Container";
-import { Switch, Route , Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import LeaderBoard from "./components/LeaderBoard";
-import QuestionList from "./components/QuestionList";
 import NewQuestion from "./components/NewQuestion";
 import QuestionDetail from "./components/QuestionDetail";
 
@@ -20,8 +19,8 @@ import { CircularProgress } from "@material-ui/core";
 function App() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.App.loading);
-  const isLoggedin = useSelector((state) => state.App.loggedIn);
 
+  const isLoggedin = useSelector((state) => state.App.loggedIn);
 
   useEffect(() => {
     dispatch(handleInitialData());
@@ -33,35 +32,34 @@ function App() {
       <main>
         <div style={{ marginTop: "100px" }}>
           <Container maxWidth="xs">
-            {loading ? (
+            {loading ? 
               <CircularProgress />
-            ) : (
+             : 
+             !isLoggedin ?
+              <Switch>
+             
+            <Route path="/" component={Login} />
+       
+                
+                </Switch>
+                :
               
               <Switch>
               
                 <Route path="/" exact component={Dashboard} />
                 <Route path="/login"  component={Login} />
                 <Route path="/leaderboard" component={LeaderBoard} />
-                <Route path="/questions" component={QuestionList} />
-                <Route path="/addquestion" component={NewQuestion} />
+                <Route path="/add" component={NewQuestion} />
                 
 
 
-                <Route path="/question-detail/:qid" component={QuestionDetail} />
+                <Route path="/question/:qid" component={QuestionDetail} />
 
                 <Route component={PageNotFound} />
               </Switch>
               
-            )}
-              { 
-                  !isLoggedin &&
-                  <Route path="/">
-                    <Redirect to="/login" />
-                    
-                    </Route>  
-                    
-                 }
-
+            }
+              
           </Container>
         </div>
       </main>

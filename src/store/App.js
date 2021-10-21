@@ -1,9 +1,10 @@
 import {  createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    authedUser: "",
+    authedUser: null,
     loading : true,
-    loggedIn: false
+    loggedIn: false,
+    notFound : "/"
     }
 
 
@@ -23,7 +24,11 @@ const App = createSlice({
           setLogOut(state){
             state.loggedIn = false
             state.authedUser= ""
+        } ,
+        setNotFound(state, action){
+            state.notFound = action.payload
         } 
+
 
     }
 })

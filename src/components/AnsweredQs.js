@@ -14,7 +14,7 @@ function AnsweredQs() {
   .sort((a,b) => questions[b].timestamp - questions[a].timestamp) 
 //turn our question object to an array and filter it to get the current questions based on our current answered ids
   
-  const questionTomap = Object.values(questions).filter(e => questid.includes(e.id)) 
+  const questionTomap = Object.values(questions).filter(e => questid.includes(e.id)).sort((a, b) => b.timestamp - a.timestamp);
   
   console.log(questionTomap)
 
@@ -45,7 +45,7 @@ function AnsweredQs() {
               </div>
               <div className="extra content">
                 <div className="ui two buttons">
-                  <Link to={`/question-detail/${q.id}`} className="ui basic green button">View Answer</Link>
+                  <Link to={`/question/${q.id}`} className="ui basic green button">View Answer</Link>
                 </div>
               </div>
             </div>

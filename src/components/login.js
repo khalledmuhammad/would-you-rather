@@ -3,7 +3,7 @@ import { Dropdown } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
 import { AppActions } from "../store/App";
 import { Button } from "@material-ui/core";
-import {  useHistory } from 'react-router-dom'
+import {  useHistory , useLocation } from 'react-router-dom'
 import Alert from '@mui/material/Alert';
 
 
@@ -47,6 +47,7 @@ function Login() {
 
   };
   const history = useHistory()
+  const location = useLocation()
   const [Alerts , SetAlert] = useState(false)
 
   const handleLogin = () => {
@@ -54,7 +55,7 @@ function Login() {
       SetAlert(false)
 
       dispatch(AppActions.setLoggedin())
-    history.push("/")
+    history.push(`${location.pathname}`)
     } else{
       SetAlert(true)
       

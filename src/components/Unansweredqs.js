@@ -14,7 +14,7 @@ function Unansweredqs() {
     .filter((question) => !questions[question].optionOne.votes.includes(authedUser) && !questions[question].optionTwo.votes.includes(authedUser))
     .sort((a,b) => questions[b].timestamp - questions[a].timestamp) 
     
-    const questionTomap = Object.values(questions).filter(e => questid.includes(e.id)) 
+    const questionTomap = Object.values(questions).filter(e => questid.includes(e.id)).sort((a, b) => b.timestamp - a.timestamp);
      console.log(questionTomap)
  
 
@@ -42,7 +42,7 @@ function Unansweredqs() {
                 </div>
                 <div className="extra content">
                   <div className="ui two buttons">
-                  <Link to={`/question-detail/${q.id}`} className="ui basic blue button">Answer Question</Link>
+                  <Link to={`/question/${q.id}`} className="ui basic blue button">Answer Question</Link>
                   </div>
                 </div>
               </div>
